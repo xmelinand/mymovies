@@ -1,0 +1,9 @@
+.body{
+  background-color: #212529;
+  min-height: 100vh;
+}
+
+.popover {
+  min-width: 360px !important;
+  max-width: 360px !important
+}
