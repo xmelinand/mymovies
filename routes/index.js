@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require ('sync-request');
 var mongoose = require('mongoose');
 var MovieWishListModel = require('../models/movies');
-
+var config = require('../config');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 // DISPLAY trending movies
 router.get('/new_movies', async function(req, res, next) {
-  var result= request('GET', `https://api.themoviedb.org/3/discover/movie?api_key=e06448432376f9133c8dc842285734fb&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&`);
+  var result= request('GET',`https://api.themoviedb.org/3/discover/movie?api_key=${config.MOVIE_KEY}&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&`);
   var result=JSON.parse(result.body);
   result = result.results;
 
